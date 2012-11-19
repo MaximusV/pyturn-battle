@@ -1,5 +1,5 @@
-from presentation import menu
-from presentation import menu_item
+from menu_item import menu_item
+from menu import menu
 
 class menu_test:
     m_items = []
