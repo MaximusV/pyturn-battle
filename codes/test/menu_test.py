@@ -1,5 +1,5 @@
-from presentation import menu
-from presentation import menu_item
+from codes.presentation.menu import menu
+from codes.presentation.menu_item import menu_item
 
 class menu_test:
     m_items = []
