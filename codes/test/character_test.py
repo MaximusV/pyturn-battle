@@ -1,5 +1,5 @@
 import unittest
-from data import Character
+from codes.data import Character
 
 class TestCharacter(unittest.TestCase):
     

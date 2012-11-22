@@ -5,8 +5,7 @@ class GameInterface(object):
     """
      Specifies the interface for user interaction with the game
 
-    :version:
-    :author:
+    :author: James Heslin (PROGRAM_IX)
     """
 
     def display(self, message):

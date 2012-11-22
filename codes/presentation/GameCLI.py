@@ -5,8 +5,7 @@ class GameCLI (GameInterface):
     """
      Command Line Interface to game
 
-    :version:
-    :author:
+    :author: James Heslin (PROGRAM_IX)
     """
 
     def display(self, message):
@@ -17,7 +16,7 @@ class GameCLI (GameInterface):
         @return  :
         @author
         """
-        pass
+        print message
 
     def get_choice(self, options):
         """
@@ -27,7 +26,11 @@ class GameCLI (GameInterface):
         @return int :
         @author
         """
-        pass
+        n = 1
+        for o in options:
+            print n, "-", o
+            n = n+1
+        return int(raw_input("Select an option: "))
 
 
 

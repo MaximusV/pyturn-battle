@@ -5,9 +5,11 @@ class CLIPresentation (GamePresentation):
     """
      Implementation of GamePresentation that has GameCLI as its interface
 
-    :version:
-    :author:
+    :author: James Heslin (PROGRAM_IX)
     """
+    
+    def __init__(self, game_interface):
+        self.game_interface = game_interface
 
     def display(self, message):
         """
@@ -17,7 +19,7 @@ class CLIPresentation (GamePresentation):
         @return  :
         @author
         """
-        pass
+        self.game_interface.display(message)
 
     def get_choice(self, options):
         """
@@ -27,7 +29,7 @@ class CLIPresentation (GamePresentation):
         @return int :
         @author
         """
-        pass
+        return self.game_interface.get_choice(options)
 
 
 

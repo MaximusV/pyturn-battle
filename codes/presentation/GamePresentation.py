@@ -1,12 +1,11 @@
 from GameInterface import *
 
-class GamePresentation(object):
+class GamePresentation:
 
     """
      Defines interface for presenting the game to the user
 
-    :version:
-    :author:
+    :author: James Heslin (PROGRAM_IX)
     """
 
     """ ATTRIBUTES
@@ -16,6 +15,7 @@ class GamePresentation(object):
     game_interface  (private)
 
     """
+
 
     def display(self, message):
         """
