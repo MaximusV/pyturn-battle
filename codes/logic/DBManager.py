@@ -1,5 +1,4 @@
-from IObserver import *
-from ISubject import *
+from codes.observer.IObserver import IObserver
 
 class DBManager (IObserver):
 

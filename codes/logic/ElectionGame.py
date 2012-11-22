@@ -1,5 +1,6 @@
 from Game import *
 from GameState import *
+from GamePresentation import *
 
 class ElectionGame (Game):
 

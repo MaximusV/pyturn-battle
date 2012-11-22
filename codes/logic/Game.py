@@ -1,9 +1,8 @@
-from ElectionGame import *
 from State import *
 from GameState import *
 from GamePresentation import *
 
-class Game (ElectionGame):
+class Game ():
 
     """
      Main class for the application
