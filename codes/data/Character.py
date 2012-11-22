@@ -17,7 +17,7 @@ class Character (ISubject):
 
      Unique identifier of the character
 
-    id  (protected)
+    id  (public)
 
      Static counter to keep track of how many characters have been created - used to
      assign IDs
