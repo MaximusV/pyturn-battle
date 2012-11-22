@@ -1,4 +1,4 @@
-from GameInterface import *
+from GameInterface import GameInterface
 
 class GameCLI (GameInterface):
 
