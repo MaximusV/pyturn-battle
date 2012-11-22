@@ -1,7 +1,5 @@
-from ISubject import *
-from Action import *
-from IObserver import *
-from Party import *
+from codes.observer import ISubject
+
 
 class GameplayVariables (ISubject):
 
@@ -9,58 +7,65 @@ class GameplayVariables (ISubject):
      Holds all the Party instances in the current game, and various gameplay
      constants
 
-    :version:
-    :author:
+    :author: Max Vizard
     """
 
     """ ATTRIBUTES
 
      Dict of all possible Actions
 
-    actions_dict  (private)
+    actions_dict  (public)
 
      List of Party instances in the current game
 
-    parties  (private)
+    parties  (public)
 
      Integer representing the currently active Party
 
-    active_party  (private)
+    active_party  (public)
 
      List of IObserver instances to notify when something changes
 
-    observers  (private)
+    observers  (public)
 
     """
+    
+    def __init__(self):
+        self.actions_dict = {}
+        self.parties = []
+        self.active_party = -1
+        self.observers = []
 
     def attach(self, ob):
         """
          Add an IObserver to the observer list
 
         @param IObserver ob : IObserver to add to the observer list
-        @return  :
+        @return void :
         @author
         """
-        pass
+        self.observers.append(ob)
 
     def detach(self, ob):
         """
          Remove an IObserver from the observer list
 
         @param IObserver ob : IObserver to remove from the observer list
-        @return  :
+        @return void :
         @author
         """
-        pass
+        self.observers.remove(ob)
 
     def notify(self):
         """
          Call update() on all observers
 
-        @return  :
+        @return void :
         @author
         """
-        pass
+        for observer in self.observers:
+            observer.update(self)
+
 
 
 

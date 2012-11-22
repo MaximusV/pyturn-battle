@@ -1,14 +1,12 @@
-from ISubject import *
-from ISubject import *
-from Character import *
+from codes.observer import ISubject
+import Character
 
 class Party (ISubject, ISubject):
 
     """
      Stores a list of members and manages member creation and retrieval
 
-    :version:
-    :author:
+    :author: Max Vizard
     """
 
     """ ATTRIBUTES
