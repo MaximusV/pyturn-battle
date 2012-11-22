@@ -1,14 +1,12 @@
-from Action import *
-from Action import *
-from Character import *
+from codes.data import Action
+from codes.data import Character
 
-class ActionDecorator (Action, Action):
+class ActionDecorator (Action):
 
     """
      Decorates an Action with additional functionality
 
-    :version:
-    :author:
+    :author: Max Vizard
     """
 
     """ ATTRIBUTES
@@ -32,8 +30,8 @@ class ActionDecorator (Action, Action):
          Perform the action. Semantically, performer performs the action on target.
 
         @param Character performer : The Character who will be the semantic performer of the action
-        @param Character target : 
-        @return string :
+        @param Character target : The Chracter upon whom the action should be performed, if any
+        @return string : A list of strings representing the information about the action
         @author
         """
         pass

@@ -1,5 +1,4 @@
-from ActionDecorator import *
-from Character import *
+from codes.data import Character
 from Function_pointer import *
 
 class Action(object):
@@ -7,8 +6,7 @@ class Action(object):
     """
      Represents an action performed by a Character on a Character
 
-    :version:
-    :author:
+    :author: Max Vizard
     """
 
     """ ATTRIBUTES
@@ -27,7 +25,6 @@ class Action(object):
 
      Name of action
      
-
     name  (private)
 
     """
@@ -37,8 +34,8 @@ class Action(object):
          Perform the action. Semantically, performer performs the action on target.
 
         @param Character performer : The Character who will be the semantic performer of the action
-        @param Character target : 
-        @return string :
+        @param Character target : The Chracter upon whom the action should be performed, if any
+        @return string : A list of strings representing the information about the action
         @author
         """
         pass

@@ -1,12 +1,11 @@
-from ISubject import *
+from codes.observer import ISubject
 
 class IObserver(object):
 
     """
-     Defines observer interface
+     Defines Observer interface
 
-    :version:
-    :author:
+    :author: Max Vizard
     """
 
     def update(self, sub):
@@ -14,7 +13,7 @@ class IObserver(object):
          Action taken when a subject notifies observer of change
 
         @param ISubject sub : Instance of the subject that changed
-        @return  :
+        @return void :
         @author
         """
         pass

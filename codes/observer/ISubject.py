@@ -1,19 +1,18 @@
-from IObserver import *
+from codes.observer import IObserver
 
 class ISubject(object):
 
     """
      Defines Subject interface
 
-    :version:
-    :author:
+    :author: Max Vizard
     """
 
     def notify(self):
         """
          Calls update() on all the observers.
 
-        @return  :
+        @return void :
         @author
         """
         pass
@@ -22,8 +21,8 @@ class ISubject(object):
         """
          Add an observer to the list
 
-        @param IObserver ob : 
-        @return  :
+        @param IObserver ob : The IObserver instance to add to the list
+        @return void :
         @author
         """
         pass
@@ -32,8 +31,8 @@ class ISubject(object):
         """
          Remove an observer from the list
 
-        @param IObserver ob : 
-        @return  :
+        @param IObserver ob : The IObserver instance to remove from the list
+        @return void :
         @author
         """
         pass
