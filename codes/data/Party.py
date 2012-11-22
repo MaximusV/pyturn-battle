@@ -1,7 +1,8 @@
+from ISubject import *
+from ISubject import *
 from Character import *
-from I_observer import *
 
-class Party(object):
+class Party (ISubject, ISubject):
 
     """
      Stores a list of members and manages member creation and retrieval
@@ -12,25 +13,21 @@ class Party(object):
 
     """ ATTRIBUTES
 
-     
+     List of members
 
     members_list  (protected)
 
-     
+     The currently active member
 
     active_member  (protected)
-
-     
-
-    observer_list  (private)
 
     """
 
     def create_character(self, attributes_dict):
         """
-         
+         Factory method to create Character instances
 
-        @param dict attributes_dict : 
+        @param dict attributes_dict : Dict of attributes for the new Character
         @return Character :
         @author
         """
@@ -38,9 +35,9 @@ class Party(object):
 
     def add_member(self, character):
         """
-         
+         Add a Character to the list of members
 
-        @param Character character : 
+        @param Character character : Character instance to add to the member list
         @return  :
         @author
         """
@@ -48,19 +45,18 @@ class Party(object):
 
     def remove_member(self, id):
         """
-         
+         Remove a Character from the member list
 
-        @param int id : 
+        @param int id : ID of member to remove
         @return  :
         @author
         """
         pass
 
-    def get_active_member(self, id):
+    def get_active_member(self):
         """
-         
+         Get the active member of this Party
 
-        @param int id : 
         @return Character :
         @author
         """
@@ -68,30 +64,10 @@ class Party(object):
 
     def get_member(self, id):
         """
-         
+         Get the Character instance that has the given ID if it is a member of this Party
 
-        @param int id : 
+        @param int id : The ID of the Character to get
         @return Character :
-        @author
-        """
-        pass
-
-    def attach(self, ob):
-        """
-         
-
-        @param i_observer ob : 
-        @return  :
-        @author
-        """
-        pass
-
-    def detach(self, ob):
-        """
-         
-
-        @param i_observer ob : 
-        @return  :
         @author
         """
         pass

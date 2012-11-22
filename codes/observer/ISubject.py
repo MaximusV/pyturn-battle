@@ -1,9 +1,9 @@
-from I_observer import *
+from IObserver import *
 
-class i_subject(object):
+class ISubject(object):
 
     """
-     
+     Defines Subject interface
 
     :version:
     :author:
@@ -11,7 +11,7 @@ class i_subject(object):
 
     def notify(self):
         """
-         
+         Calls update() on all the observers.
 
         @return  :
         @author
@@ -20,9 +20,9 @@ class i_subject(object):
 
     def attach(self, ob):
         """
-         
+         Add an observer to the list
 
-        @param i_observer ob : 
+        @param IObserver ob : 
         @return  :
         @author
         """
@@ -30,9 +30,9 @@ class i_subject(object):
 
     def detach(self, ob):
         """
-         
+         Remove an observer from the list
 
-        @param i_observer ob : 
+        @param IObserver ob : 
         @return  :
         @author
         """
