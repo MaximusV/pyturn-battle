@@ -7,8 +7,7 @@ class BattleEngine(object):
      Class that stores and manages interactions between parties, characters and
      actions. Bridges Data and Logic layers.
 
-    :version:
-    :author:
+    :author: James Heslin
     """
 
     """ ATTRIBUTES

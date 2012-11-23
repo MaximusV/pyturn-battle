@@ -5,8 +5,7 @@ class DBManager (IObserver):
     """
      Manages the saved state (in database or otherwise) of the game
 
-    :version:
-    :author:
+    :author: James Heslin
     """
 
     def update(self, sub):

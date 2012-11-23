@@ -1,14 +1,13 @@
-from State import *
-from BattleEngine import *
-from DBManager import *
+from State import State
+from BattleEngine import BattleEngine
+from DBManager import DBManager
 
 class GameState (State):
 
     """
      State representing the 'play'-specific processes
 
-    :version:
-    :author:
+    :author: James Heslin
     """
 
     """ ATTRIBUTES

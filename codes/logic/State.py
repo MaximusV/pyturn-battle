@@ -4,8 +4,7 @@ class State(object):
     """
      Interface for state-specific behaviour
 
-    :version:
-    :author:
+    :author: James Heslin
     """
 
     def _get_options(self):

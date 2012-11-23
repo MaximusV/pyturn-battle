@@ -4,9 +4,8 @@ class MenuState (State):
 
     """
      Menu-specific behaviour
-
-    :version:
-    :author:
+    
+    :author: James Heslin
     """
 
     def get_options(self):

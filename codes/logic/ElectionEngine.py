@@ -6,8 +6,7 @@ class ElectionEngine (BattleEngine):
     """
      Runs the election
 
-    :version:
-    :author:
+    :author: James Heslin
     """
 
     def setup_data(self):

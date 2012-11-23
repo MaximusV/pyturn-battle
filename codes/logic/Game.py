@@ -2,13 +2,12 @@ from State import *
 from GameState import *
 from GamePresentation import *
 
-class Game ():
+class Game:
 
     """
      Main class for the application
 
-    :version:
-    :author:
+    :author: James Heslin
     """
 
     """ ATTRIBUTES
