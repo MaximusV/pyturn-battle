@@ -1,5 +1,5 @@
-from ActionDecorator import *
-from Character import *
+from codes.data import ActionDecorator
+from codes.data.Character import import 
 from Action import *
 
 class OnTheInternet (ActionDecorator):

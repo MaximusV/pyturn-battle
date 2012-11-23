@@ -61,7 +61,7 @@ class PoliticalParty (Party):
         if member:
             self.members_list.remove(member)
         else:
-            print 'Member with ID: %i not in party %s' % id, self.name
+            print 'Member with ID: %i not in party %s' % (id, self.name)
 
     def get_active_member(self):
         """
