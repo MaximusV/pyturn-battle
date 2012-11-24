@@ -1,57 +1,73 @@
-from Action import *
-from Character import *
-from Function_pointer import *
+from codes.data import Action
+from codes.data.Character import Character
 
 class ReduceAttribute (Action):
 
     """
      Reduce an attribute of a Character
 
-    :version:
-    :author:
+    :author: Max Vizard
     """
 
     """ ATTRIBUTES
 
      String to display during the action
      
-
     in_act_string  (private)
 
-     
-
+     The string to display after the action is finished
+    
     done_act_string  (private)
 
      List of operations that make up the Action
 
     operations  (private)
 
-     The attribute to increase
+     Name of the attribute in the Character attributes
 
-    attribute  (private)
+    attr_str  (private)
 
      How much to reduce the attribute by
 
     reduce_by  (private)
 
      Name of action
-     
 
     name  (private)
 
     """
+    
+    def __init__(self, name, str_dict={'in':'', 'done':''}, attr_str='', reduce_by=1,):
+            self.name = name
+            self.in_act_str = str_dict.get('in', '')
+            self.done_act_str = str_dict.get('done', '')
+            self.operations = [Character.decr_attr,]
+            self.attr_str = attr_str
+            self.increase_by = reduce_by
 
-    def execute(self, performer, target):
+    def execute(self, performer, target=None):
         """
          Do the action: Semantically, the performer is performing the action on the
          target
 
         @param Character performer : The Character performing the action
         @param Character target : The target of the action
-        @return string :
+        @return list : List of strings containing output about the action
         @author
         """
-        pass
+        results = []
+        
+        if target:
+            self.operations[0](target, self.attr_str, self.increase_by)
+            results.append(self.in_act_str % (performer.name, target.name))
+            results.append(self.done_act_str % (target.name))
+        else:
+            self.operations[0](performer, self.attr_str, self.increase_by)
+            results.append(self.in_act_str % (performer.name, 'himself'))
+            results.append(self.done_act_str % (performer.name))
+            
+        return results
+
 
 
 
