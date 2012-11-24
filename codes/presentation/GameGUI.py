@@ -17,7 +17,8 @@ class GameGUI (GameInterface):
         @return  :
         @author
         """
-        eg.msgbox(message, "Message")
+        for i in message:
+            eg.msgbox(i, "Message")
 
     def get_choice(self, options):
         """

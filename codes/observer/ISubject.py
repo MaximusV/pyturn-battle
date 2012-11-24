@@ -1,6 +1,4 @@
-from codes.observer import IObserver
-
-class ISubject(object):
+class ISubject:
 
     """
      Defines Subject interface

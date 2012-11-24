@@ -1,5 +1,6 @@
 from State import State
 from BattleEngine import BattleEngine
+from ElectionEngine import ElectionEngine
 from DBManager import DBManager
 
 class GameState (State):
@@ -22,15 +23,19 @@ class GameState (State):
     db_manager  (private)
 
     """
+    
+    def __init__(self):
+        self.engine = self.create_engine()
+        self.db_manager = DBManager()
 
     def get_options(self):
         """
          Return the names of the currently available actions as a list of strings
 
-        @return string :
+        @return list : List of possible actions, first element is a flag 
         @author
         """
-        pass
+        return self.engine.get_options()
 
     def get_state_desc(self):
         """
@@ -39,26 +44,26 @@ class GameState (State):
         @return string :
         @author
         """
-        pass
+        return self.engine.get_desc()
 
     def create_engine(self):
         """
          Interface for the creation of new BattleEngine instances
 
-        @return BattleEngine :
+        @return BattleEngine : A subclass of BattleEngine for this GameState
         @author
         """
-        pass
+        return ElectionEngine()
 
-    def _process_input(self, curr_action):
+    def process_input(self, curr_action):
         """
          Performs the current action and returns the result
 
-        @param int curr_action : An integer representing the current actionp
-        @return string :
+        @param int curr_action : An integer representing the current action
+        @return string : 
         @author
         """
-        pass
+        return self.engine.perform_action(curr_action)
 
 
 

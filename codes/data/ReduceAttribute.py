@@ -1,4 +1,4 @@
-from codes.data import Action
+from codes.data.Action import Action
 from codes.data.Character import Character
 
 class ReduceAttribute (Action):
@@ -55,7 +55,7 @@ class ReduceAttribute (Action):
         @return list : List of strings containing output about the action
         @author
         """
-        results = []
+        results = ["display"]
         
         if target:
             self.operations[0](target, self.attr_str, self.increase_by)

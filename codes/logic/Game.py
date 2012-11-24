@@ -1,6 +1,12 @@
-from State import *
-from GameState import *
-from GamePresentation import *
+from State import State
+from GameState import GameState
+from codes.presentation.GamePresentation import GamePresentation
+
+
+SWITCH_FLAG = "switch"
+QUIT_FLAG = "quit"
+CHOOSE_FLAG = "choose"
+DISPLAY_FLAG = "display"
 
 class Game:
 

@@ -16,7 +16,8 @@ class GameCLI (GameInterface):
         @return  :
         @author
         """
-        print message
+        for i in message:
+            print i
 
     def get_choice(self, options):
         """

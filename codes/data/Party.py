@@ -1,4 +1,4 @@
-from codes.observer import ISubject
+from codes.observer.ISubject import ISubject
 import Character
 
 class Party (ISubject, ISubject):
@@ -21,10 +21,11 @@ class Party (ISubject, ISubject):
 
     """
 
-    def create_character(self, attributes_dict):
+    def create_character(self, name, attributes_dict):
         """
          Factory method to create Character instances
-
+         
+        @param string name : String representing the name of the Character to be created
         @param dict attributes_dict : Dict of attributes for the new Character
         @return Character :
         @author
@@ -41,11 +42,11 @@ class Party (ISubject, ISubject):
         """
         pass
 
-    def remove_member(self, id):
+    def remove_member(self, id_num):
         """
          Remove a Character from the member list
 
-        @param int id : ID of member to remove
+        @param int id_num : ID of member to remove
         @return  :
         @author
         """
@@ -60,7 +61,7 @@ class Party (ISubject, ISubject):
         """
         pass
 
-    def get_member(self, id):
+    def get_member(self, id_num):
         """
          Get the Character instance that has the given ID if it is a member of this Party
 

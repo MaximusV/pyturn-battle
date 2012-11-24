@@ -1,4 +1,5 @@
 from State import *
+from codes.logic.Game import SWITCH_FLAG, CHOOSE_FLAG, DISPLAY_FLAG, QUIT_FLAG
 
 class MenuState (State):
 
@@ -15,7 +16,7 @@ class MenuState (State):
         @return string :
         @author
         """
-        pass
+        return [CHOOSE_FLAG, "Start game", "Quit"]
 
     def get_state_desc(self):
         """
@@ -24,7 +25,7 @@ class MenuState (State):
         @return string :
         @author
         """
-        pass
+        return [DISPLAY_FLAG, "Menu"]
 
     def process_input(self, curr_action):
         """
@@ -34,7 +35,10 @@ class MenuState (State):
         @return string :
         @author
         """
-        pass
+        if curr_action == 0:
+            return [SWITCH_FLAG, "Starting game..."]
+        elif curr_action == 1:
+            return [QUIT_FLAG, "Quitting..."]
 
 
 

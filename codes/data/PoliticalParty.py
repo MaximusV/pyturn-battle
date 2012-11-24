@@ -28,7 +28,7 @@ class PoliticalParty (Party):
         self.members_list = []
         self.active_member = None
         
-    def create_character(self, name, attributes_dict):
+    def create_character(self, name, attributes_dict, actions_list):
         """
          Factory Method to create a new Character
         
@@ -37,7 +37,7 @@ class PoliticalParty (Party):
         @return Character :
         @author
         """
-        return Character.__init__(self, name, attributes_dict)
+        return Character(name, attributes_dict, actions_list)
 
     def add_member(self, politician):
         """

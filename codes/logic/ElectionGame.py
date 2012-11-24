@@ -1,9 +1,10 @@
-from Game import Game
+from Game import Game, SWITCH_FLAG, CHOOSE_FLAG, DISPLAY_FLAG, QUIT_FLAG
 from GameState import GameState
 from MenuState import MenuState
 from codes.presentation.CLIPresentation import CLIPresentation
 from codes.presentation.GUIPresentation import GUIPresentation
 from sys import exit
+
 
 class ElectionGame (Game):
 
@@ -39,16 +40,16 @@ class ElectionGame (Game):
         opt = self.states[0].get_options()
         inp = self.presentation.get_choice(opt)
         result = self.states[0].process_input(inp)
-        while (result[0] == "choice"):
+        while (result[0] == CHOOSE_FLAG):
             inp = self.presentation.get_choice(result[1:])
             result = self.states[0].process_input(inp)
-        if(result[0] == "quit"):
+        if(result[0] == QUIT_FLAG):
             self.presentation.display(result[1:])
             return -1
-        elif(result[0] == "switch"):
+        elif(result[0] == SWITCH_FLAG):
             self.presentation.display(result[1:])
             return 1
-        elif(result[0] == "display"):
+        elif(result[0] == DISPLAY_FLAG):
             self.presentation.display(result[1:])
             return 0
         
@@ -61,16 +62,21 @@ class ElectionGame (Game):
         """
         turn_flag = 0
         while not(turn_flag == -1):
-            turn_flag = self.turn()
-            if turn_flag == 1:
-                # Switch state
-                tmp = self.states[0]
-                self.states[0] = self.states[1]
-                self.states[1] = tmp
-            elif turn_flag == -1:
-                # Quit
-                exit(0)                
-            
+            try:
+                turn_flag = self.turn()
+                if turn_flag == 1:
+                    # Switch state
+                    tmp = self.states[0]
+                    self.states[0] = self.states[1]
+                    self.states[1] = tmp
+                elif turn_flag == -1:
+                    # Quit
+                    exit(0)                
+    
+            except ValueError:
+                self.presentation.display(["Invalid input!"])
+            except IndexError:
+                self.presentation.display(["Invalid action!"])
 
     def create_state(self, s_type):
         """
@@ -86,5 +92,7 @@ class ElectionGame (Game):
             return MenuState()
         
 
-
+if __name__ == "__main__":
+    e_g = ElectionGame()
+    e_g.run()
 

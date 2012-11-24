@@ -1,4 +1,4 @@
-from codes.observer import ISubject
+from codes.observer.ISubject import ISubject
 
 
 class GameplayVariables (ISubject):
@@ -35,6 +35,12 @@ class GameplayVariables (ISubject):
         self.parties = []
         self.active_party = -1
         self.observers = []
+        
+    def get_action(self, a_int):
+        party = self.parties[self.active_party]
+        char = party.get_active_member()
+        a_string = char.get_action(a_int)
+        return self.actions_dict.get(a_string)
 
     def attach(self, ob):
         """

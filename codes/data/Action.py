@@ -1,5 +1,4 @@
 from codes.data import Character
-from Function_pointer import *
 
 class Action(object):
 

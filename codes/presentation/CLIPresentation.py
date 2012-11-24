@@ -1,4 +1,5 @@
-from GamePresentation import *
+from GamePresentation import GamePresentation
+from GameCLI import GameCLI
 
 class CLIPresentation (GamePresentation):
 
@@ -8,8 +9,8 @@ class CLIPresentation (GamePresentation):
     :author: James Heslin (PROGRAM_IX)
     """
     
-    def __init__(self, game_interface):
-        self.game_interface = game_interface
+    def __init__(self):
+        self.game_interface = GameCLI()
 
     def display(self, message):
         """

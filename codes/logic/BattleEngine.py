@@ -1,5 +1,5 @@
-from Party import *
-from GameplayVariables import *
+from codes.data.Party import Party
+from codes.data.GameplayVariables import GameplayVariables
 
 class BattleEngine(object):
 

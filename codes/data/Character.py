@@ -1,7 +1,7 @@
-from codes.observer import ISubject
+from codes.observer.ISubject import ISubject
 import operator as operate
 
-class Character (ISubject):
+class Character(ISubject):
 
     """
      Stores and manages data relating to an individual character and their attributes
@@ -14,6 +14,10 @@ class Character (ISubject):
      A dict of all the character's attributes
 
     attributes_dict  (protected)
+    
+    A list of strings representing Actions this Character can perform
+    
+    actions_list (private)
 
      Unique identifier of the character
 
@@ -32,11 +36,15 @@ class Character (ISubject):
     
     CHARACTER_COUNT = 0
     
-    def __init__(self, name, attr_dict={'HP': 10, 'DF': 3, 'AD': 1}):
+    def __init__(self, name, attr_dict={'HP': 10, 'DF': 3, 'AD': 1}, actions=[]):
         self.name = name
         self.attributes_dict = attr_dict
         self.id = Character.CHARACTER_COUNT
+        self.actions_list = actions
         Character.CHARACTER_COUNT += 1
+
+    def get_action(self, a_int):
+        return self.actions_list[a_int-1]
 
     def remove_attr(self, name):
         """
@@ -77,7 +85,7 @@ class Character (ISubject):
             print 'Expected a numerical value'
             
 
-    def mod_attr(self, name, value = 1, operator):
+    def mod_attr(self, name, value = 1, operator='+'):
         """
          Change value of an attribute in the character's dict using an operator
 
