@@ -31,7 +31,9 @@ class GameCLI (GameInterface):
         for o in options:
             print n, "-", o
             n = n+1
-        return int(raw_input("Select an option: "))
+        res = int(raw_input("Select an option: "))-1
+        #print "Selected", res
+        return res
 
 
 

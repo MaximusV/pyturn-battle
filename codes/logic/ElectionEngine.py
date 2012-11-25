@@ -3,7 +3,7 @@ from codes.data.PoliticalParty import PoliticalParty
 from codes.data.GameplayVariables import GameplayVariables
 from codes.data.IncreaseAttribute import IncreaseAttribute
 from codes.data.ReduceAttribute import ReduceAttribute
-
+from codes.logic.Game import *
 
 class ElectionEngine (BattleEngine):
 
@@ -63,7 +63,7 @@ class ElectionEngine (BattleEngine):
             'done':"%s lied to the public! His entourage has decreased!"}, 
                                     'ent', 50)
         action4 = IncreaseAttribute("Legislate", {'in':"%s is legislating to make %s and his rich friends pay for everyone's healthcare!", 
-            'done':"%s appealed to the 99! His popularity has increased!"}, 
+            'done':"%s appealed to the middle classes! His popularity has increased!"}, 
                                     'pop', 10)
         action5 = ReduceAttribute("Publish Birth Certificate", {'in':"%s is showing %s up by proving he's American!", 
             'done':"%s's popularity has fallen!"}, 
@@ -85,9 +85,9 @@ class ElectionEngine (BattleEngine):
         @return string :
         @author
         """
-        print action
+        #print "Action", action
         act = self.vars.get_action(action)
-        print act.name
+        #print act.name
         return (act.execute(self.vars.parties[self.vars.active_party].get_active_member()))
 
     def create_party(self, name):
@@ -99,11 +99,24 @@ class ElectionEngine (BattleEngine):
         @author
         """
         return PoliticalParty(name)
-
+    
     def get_options(self):
         char = self.vars.parties[self.vars.active_party].get_active_member()
-        return char.actions_list
+        ch_act =[CHOOSE_FLAG]
+        ch_act.extend(char.actions_list)
+        #print ch_act
+        return ch_act
 
+    def end_turn(self):
+        if self.vars.active_party < len(self.vars.parties) -1:
+            self.vars.active_party = self.vars.active_party+1
+        else:
+            self.vars.active_party = 0
+            
+    def get_desc(self):
+        return self.vars.parties[self.vars.active_party].get_state()
+
+# NOT USING THIS YET - It's wrong
     def get_char_choice(self, curr_action):
         """
          Get a list of the choices available as targets of the current action

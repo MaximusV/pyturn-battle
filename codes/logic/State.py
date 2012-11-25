@@ -15,6 +15,13 @@ class State(object):
         @author
         """
         pass
+    
+    def end_turn(self):
+        """
+         Finish the current turn.
+        @author
+        """
+        pass
 
     def _get_state_desc(self):
         """

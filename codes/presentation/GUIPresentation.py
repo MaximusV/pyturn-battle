@@ -1,4 +1,5 @@
 from GamePresentation import *
+from GameGUI import GameGUI
 
 class GUIPresentation (GamePresentation):
 
@@ -9,8 +10,8 @@ class GUIPresentation (GamePresentation):
     :author: James Heslin (PROGRAM_IX)
     """
     
-    def __init__(self, game_interface):
-        self.game_interface = game_interface
+    def __init__(self):
+        self.game_interface = GameGUI()
 
     def display(self, message):
         """

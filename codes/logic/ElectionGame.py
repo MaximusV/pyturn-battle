@@ -27,9 +27,9 @@ class ElectionGame (Game):
     """
 
     def __init__(self):
-        self.states = [self.create_state('game'), self.create_state('menu')]
+        self.states = [self.create_state('menu'), self.create_state('game')]
         self.presentation = CLIPresentation()
-
+        #self.presentation = GUIPresentation()
     def turn(self):
         """
          Method to call each turn in the Election game
@@ -38,7 +38,9 @@ class ElectionGame (Game):
         @author
         """
         opt = self.states[0].get_options()
-        inp = self.presentation.get_choice(opt)
+        #print self.states[0]
+        #print opt
+        inp = self.presentation.get_choice(opt[1:])
         result = self.states[0].process_input(inp)
         while (result[0] == CHOOSE_FLAG):
             inp = self.presentation.get_choice(result[1:])
@@ -72,7 +74,8 @@ class ElectionGame (Game):
                 elif turn_flag == -1:
                     # Quit
                     exit(0)                
-    
+                self.states[0].end_turn()
+                self.presentation.display(self.states[0].get_state_desc())
             except ValueError:
                 self.presentation.display(["Invalid input!"])
             except IndexError:

@@ -97,6 +97,18 @@ class PoliticalParty (Party):
         print 'Member with ID: %i not found' % id_num
         return None
         
-
-
-
+    def get_state(self):
+        """
+         Get information about the state of this Party
+         
+         @return list : A list of strings representing the state of the Party
+         @author
+        """
+        a = []
+        for mem in self.members_list:
+            if(mem.attributes_dict.get('pop') < 25):
+                a.append(mem.name + " is out of the running!")
+            else:
+                a.append(mem.name + "\n")
+                a.extend(mem.get_state())
+        return a

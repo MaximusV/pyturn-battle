@@ -40,6 +40,7 @@ class GameplayVariables (ISubject):
         party = self.parties[self.active_party]
         char = party.get_active_member()
         a_string = char.get_action(a_int)
+        #print a_string
         return self.actions_dict.get(a_string)
 
     def attach(self, ob):
