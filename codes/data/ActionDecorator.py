@@ -24,6 +24,9 @@ class ActionDecorator (Action):
     in_act_string  (private)
 
     """
+    
+    def __init__(self, action):
+        self.act = action
 
     def execute(self, performer, target):
         """
@@ -34,7 +37,6 @@ class ActionDecorator (Action):
         @return string : A list of strings representing the information about the action
         @author
         """
-        pass
-
+        return self.act.execute()
 
 

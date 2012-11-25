@@ -1,14 +1,13 @@
-from codes.data import ActionDecorator
-from codes.data.Character import import 
-from Action import *
+from codes.data.ActionDecorator import ActionDecorator
+from codes.data.Character import Character 
+from codes.data.Action import Action
 
 class OnTheInternet (ActionDecorator):
 
     """
      Changes an Action to happen in the context of the Internet
 
-    :version:
-    :author:
+    :author: Max Vizard
     """
 
     """ ATTRIBUTES
@@ -27,11 +26,13 @@ class OnTheInternet (ActionDecorator):
 
      Name of action
      
-
     name  (private)
 
     """
 
+    def __init__(self, action):
+        ActionDecorator.__init__(self, action)
+        
     def execute(self, performer, target):
         """
          Perform the action. Semantically, performer performs the action on target.
@@ -41,7 +42,13 @@ class OnTheInternet (ActionDecorator):
         @return string :
         @author
         """
-        pass
-
+        pre_results = self.act.execute()
+        try:
+            pre_results[0] = pre_results[0][0,-1] + 'on the internet!'
+            pre_results[1] = pre_results[1][0,-1] + '. %s\'s popularity has risen, especially with the younger vote!'
+            
+            performer.incr_attr('pop', 5)
+        except IndexError:
+            print 'Expected at least two result strings from Action %s' % self.act.name
 
 
