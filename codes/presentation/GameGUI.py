@@ -29,6 +29,6 @@ class GameGUI (GameInterface):
         @author
         """
         return options.index(eg.choicebox("Select an action", "Choice", 
-                                          options)) + 1
+                                          options))
 
 

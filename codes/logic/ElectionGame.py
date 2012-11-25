@@ -29,7 +29,7 @@ class ElectionGame (Game):
     def __init__(self):
         self.states = [self.create_state('menu'), self.create_state('game')]
         self.presentation = CLIPresentation()
-
+        #self.presentation = GUIPresentation()
     def turn(self):
         """
          Method to call each turn in the Election game

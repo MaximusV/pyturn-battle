@@ -63,7 +63,7 @@ class ElectionEngine (BattleEngine):
             'done':"%s lied to the public! His entourage has decreased!"}, 
                                     'ent', 50)
         action4 = IncreaseAttribute("Legislate", {'in':"%s is legislating to make %s and his rich friends pay for everyone's healthcare!", 
-            'done':"%s appealed to the 99! His popularity has increased!"}, 
+            'done':"%s appealed to the middle classes! His popularity has increased!"}, 
                                     'pop', 10)
         action5 = ReduceAttribute("Publish Birth Certificate", {'in':"%s is showing %s up by proving he's American!", 
             'done':"%s's popularity has fallen!"}, 
