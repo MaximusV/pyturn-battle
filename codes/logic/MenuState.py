@@ -39,6 +39,12 @@ class MenuState (State):
             return [SWITCH_FLAG, "Starting game..."]
         elif curr_action == 1:
             return [QUIT_FLAG, "Quitting..."]
+        else:
+            return ["DERP", "DERP"]
 
-
-
+    def end_turn(self):
+        """
+         Finish the current turn.
+        @author
+        """
+        pass

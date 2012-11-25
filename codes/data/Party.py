@@ -70,6 +70,13 @@ class Party (ISubject, ISubject):
         @author
         """
         pass
-
-
+    
+    def get_state(self):
+        """
+         Get information about the state of this Party
+         
+         @return list : A list of strings representing the state of the Party
+         @author
+        """
+        pass 
 

@@ -1,7 +1,6 @@
 from State import State
-from GameState import GameState
+from GameState import *
 from codes.presentation.GamePresentation import GamePresentation
-
 
 SWITCH_FLAG = "switch"
 QUIT_FLAG = "quit"

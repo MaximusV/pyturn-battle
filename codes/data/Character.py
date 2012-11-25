@@ -44,7 +44,13 @@ class Character(ISubject):
         Character.CHARACTER_COUNT += 1
 
     def get_action(self, a_int):
-        return self.actions_list[a_int-1]
+        return self.actions_list[a_int]
+    
+    def get_state(self):
+        a = []
+        for i in self.attributes_dict:
+            a.append(i+" "+str(self.attributes_dict[i]))
+        return a
 
     def remove_attr(self, name):
         """

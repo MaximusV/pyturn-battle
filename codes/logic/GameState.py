@@ -3,6 +3,7 @@ from BattleEngine import BattleEngine
 from ElectionEngine import ElectionEngine
 from DBManager import DBManager
 
+
 class GameState (State):
 
     """
@@ -65,5 +66,11 @@ class GameState (State):
         """
         return self.engine.perform_action(curr_action)
 
+    def end_turn(self):
+        """
+         Finish the current turn.
+        @author
+        """
+        self.engine.end_turn()
 
 
