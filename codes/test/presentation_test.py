@@ -1,14 +1,14 @@
 import unittest
 from codes.presentation.CLIPresentation import CLIPresentation
 from codes.presentation.GUIPresentation import GUIPresentation
-from codes.presentation.GameCLI import GameCLI
-from codes.presentation.GameGUI import GameGUI
+from codes.presentation.CLInterface import CLInterface
+from codes.presentation.GUInterface import GUInterface
 
 class TestPresentation(unittest.TestCase):
     
     def setUp(self):
-        self.pres_cli = CLIPresentation(GameCLI())
-        self.pres_gui = GUIPresentation(GameGUI())
+        self.pres_cli = CLIPresentation(CLInterface())
+        self.pres_gui = GUIPresentation(GUInterface())
 
     def test_display(self):
         self.pres_cli.display("Some test message")

@@ -206,12 +206,12 @@
         </UML:Operation>
        </UML:Classifier.feature>
       </UML:Class>
-      <UML:Class visibility="public" isSpecification="false" namespace="Logical View" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="YBLxdAALPmZO" comment="Graphical interface to game" name="GameGUI">
+      <UML:Class visibility="public" isSpecification="false" namespace="Logical View" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="YBLxdAALPmZO" comment="Graphical interface to game" name="GUInterface">
        <UML:GeneralizableElement.generalization>
         <UML:Generalization xmi.idref="L5llkP7aJyz7"/>
        </UML:GeneralizableElement.generalization>
       </UML:Class>
-      <UML:Class visibility="public" isSpecification="false" namespace="Logical View" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="HscUL4j21nR9" comment="Command Line Interface to game" name="GameCLI">
+      <UML:Class visibility="public" isSpecification="false" namespace="Logical View" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="HscUL4j21nR9" comment="Command Line Interface to game" name="CLInterface">
        <UML:GeneralizableElement.generalization>
         <UML:Generalization xmi.idref="7pHQnEVXWjfx"/>
        </UML:GeneralizableElement.generalization>
@@ -245,25 +245,25 @@
         </UML:Operation>
        </UML:Classifier.feature>
       </UML:Class>
-      <UML:Class visibility="public" isSpecification="false" namespace="Logical View" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="XCIAeMMYGb1K" comment="Implementation of GamePresentation that has GameGUI as its interface" name="GUIPresentation">
+      <UML:Class visibility="public" isSpecification="false" namespace="Logical View" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="XCIAeMMYGb1K" comment="Implementation of GamePresentation that has GUInterface as its interface" name="GUIPresentation">
        <UML:GeneralizableElement.generalization>
         <UML:Generalization xmi.idref="O6Uup9p65NUI"/>
        </UML:GeneralizableElement.generalization>
       </UML:Class>
-      <UML:Class visibility="public" isSpecification="false" namespace="Logical View" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="EP0wx04HaZq1" comment="Implementation of GamePresentation that has GameCLI as its interface" name="CLIPresentation">
+      <UML:Class visibility="public" isSpecification="false" namespace="Logical View" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="EP0wx04HaZq1" comment="Implementation of GamePresentation that has CLInterface as its interface" name="CLIPresentation">
        <UML:GeneralizableElement.generalization>
         <UML:Generalization xmi.idref="1606RVPwepVD"/>
        </UML:GeneralizableElement.generalization>
        <UML:Classifier.feature>
-        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="hK9V06BpQS15" comment="Implementation of display that delegates to its GameCLI instance" name="display">
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="hK9V06BpQS15" comment="Implementation of display that delegates to its CLInterface instance" name="display">
          <UML:BehavioralFeature.parameter>
-          <UML:Parameter visibility="private" isSpecification="false" xmi.id="OpIsbbAEszGR" type="N863N9O6Ep2Z" value="" comment="Message to be passed to GameCLI" name="message"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="OpIsbbAEszGR" type="N863N9O6Ep2Z" value="" comment="Message to be passed to CLInterface" name="message"/>
          </UML:BehavioralFeature.parameter>
         </UML:Operation>
-        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="TYpuyrxMeDEF" comment="Implementaion of get_choice that delegates to its GameCLI instance" name="get_choice">
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="TYpuyrxMeDEF" comment="Implementaion of get_choice that delegates to its CLInterface instance" name="get_choice">
          <UML:BehavioralFeature.parameter>
           <UML:Parameter kind="return" xmi.id="YR1boMdHvR9r" type="WTRdsxTwYtaz"/>
-          <UML:Parameter visibility="private" isSpecification="false" xmi.id="oNReKh5HwqB9" type="N863N9O6Ep2Z" value="" comment="List of options to pass to the GameCLI " name="options"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="oNReKh5HwqB9" type="N863N9O6Ep2Z" value="" comment="List of options to pass to the CLInterface " name="options"/>
          </UML:BehavioralFeature.parameter>
         </UML:Operation>
        </UML:Classifier.feature>
