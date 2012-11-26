@@ -1,6 +1,7 @@
-\documentclass[11pt]{article}
+\documentclass[11pt]{report}
 %Gummi|061|=)
-\title{\textbf{Welcome to Gummi 0.6.1}}
+\title{\textbf{pyturn}\\
+An Open-Source Turn-Based Battle Framework}
 \author{Max Vizard | 09006863\\
 		James Heslin | 09006132\\}
 \begin{document}
@@ -8,12 +9,33 @@
 \maketitle
 
 \section{Narrative}
+You and a small team of friends have decided to construct an open-source framework/engine for turn based, party-centric battle games. A sample implementation should be included to help other developers understand the framework. 
 
-A two-man team of university students have an over-ambitious plan to 
-\section{Feedback}
-We hope you will enjoy using this release as much as we enjoyed creating it. If you have comments, suggestions or wish to report an issue you are experiencing - contact us at: \emph{http://gummi.midnightcoding.org}.
+\section{Requirements}
+	\subsection{Functional}
+	\begin{itemize}
+			\item{A system for two or more ‘parties’ of at least one character to engage in some form of turn based competition.}
+			\item{Each party member takes a turn in the competition, during which they can perform set actions.}
+			\item{Party members have their own individual attributes that influence their performance and possibly the turn order.}
+			\item{An interface for at least one player to interact with the system, controlling one or more party members, allowing for action selection, result output and display of game state.}
+			\item{A method of storing game state and predetermined gameplay variables.}
+			%\item{A method of persisting game state if program is ended and allowing the player to continue from that state when the program is run again.}
+	\end{itemize}
+	\subsection{Non-Functional}
+	\begin{itemize}
+		\item{Portability}
+		\item{Extensibility}
+		\item{Interoperability}
+		\item{Quality}
+		\item{Comprehensibility}
+	\end{itemize}
 
-\section{One more thing}
-If you are wondering where your old default text is; it has been stored as a template. The template menu can be used to access and restore it. 
+\section{Architectural Use Cases}
+	\subsection{Asynchronous rock, paper, scissors game}
+	Developer wants to create a game for two people to play the rock, paper, scissors game together on the same computer, taking turns to enter their choice and then evaluating a winner as though the choices had taken place at the same time. 
+	\subsection{Monster battle game (in the style of Pok\'{e}mon\textregistered)}
+	Developer wants to create a game where the player controls a group of monsters in battles with other groups of monsters. Each monster has a number of moves they can perform, but each move can only be performed a certain number of times during a single battle. Each turn, the player can choose to switch out their monster or make a move. The game is won when one player’s monsters are all incapacitated.
+	\subsection{Digital implementation of trading card type games}
+	Developer wants a game where players can take turns placing cards on a virtual table, similar to games like Magic: the Gathering. Cards can have various effects on either player, such as increasing or decreasing their ‘life’ score, allowing them to draw extra cards from a deck, etc.
 
 \end{document}
