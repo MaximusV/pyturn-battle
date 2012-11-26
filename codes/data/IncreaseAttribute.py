@@ -48,26 +48,3 @@ class IncreaseAttribute (Action):
         self.operations = [Character.incr_attr, ]
         self.attr_str = attr_str
         self.increase_by = incr_by
-
-    def execute(self, performer, target=None):
-        """
-         Do the action: Semantically, the performer is performing the action on
-         the target
-
-        @param Character performer : The Character performing the action
-        @param Character target : The target of the action
-        @return list : List of strings containing output about the action
-        @author
-        """
-        results = ["display"]
-
-        if target:
-            self.operations[0](target, self.attr_str, self.increase_by)
-            results.append(self.in_act_str % (performer.name, target.name))
-            results.append(self.done_act_str % (target.name))
-        else:
-            self.operations[0](performer, self.attr_str, self.increase_by)
-            results.append(self.in_act_str % (performer.name, 'himself'))
-            results.append(self.done_act_str % (performer.name))
-
-        return results

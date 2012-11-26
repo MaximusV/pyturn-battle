@@ -88,7 +88,31 @@ class ElectionEngine (BattleEngine):
         #print "Action", action
         act = self.vars.get_action(action)
         #print act.name
-        return (act.execute(self.vars.parties[self.vars.active_party].get_active_member()))
+        return (self.execute(act, self.vars.parties[self.vars.active_party].get_active_member()))
+
+    def execute(self, act, performer, target=None):
+        """
+         Do the action: Semantically, the performer is performing the action on the
+         target
+
+        @param Character performer : The Character performing the action
+        @param Character target : The target of the action
+        @return list : List of strings containing output about the action
+        @author
+        """
+        results = ["display"]
+        
+        if target:
+            act.operations[0](target, act.attr_str, act.increase_by)
+            results.append(act.in_act_str % (performer.name, target.name))
+            results.append(act.done_act_str % (target.name))
+        else:
+            act.operations[0](performer, act.attr_str, act.increase_by)
+            results.append(act.in_act_str % (performer.name, 'himself'))
+            results.append(act.done_act_str % (performer.name))
+            
+        return results
+
 
     def create_party(self, name):
         """
