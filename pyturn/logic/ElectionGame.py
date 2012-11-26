@@ -2,7 +2,7 @@ from Game import Game, SWITCH_FLAG, CHOOSE_FLAG, DISPLAY_FLAG, QUIT_FLAG
 from GameState import GameState
 from MenuState import MenuState
 from pyturn.presentation.CLIPresentation import CLIPresentation
-from pyturn.presentation.GUIPresentation import GUIPresentation
+#from pyturn.presentation.GUIPresentation import GUIPresentation
 from sys import exit
 
 

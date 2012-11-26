@@ -42,6 +42,32 @@ class ActionDecorator (Action):
                         the action
         @author
         """
+        pass
         #return self.act.execute(performer, target)
 
+    def get_operations(self):
+        """
+         Accessor method for operations attribute.
+         
+        @return list : The list of operations
+        @author
+        """
+        pass
 
+    def get_in_act(self):
+        """
+         Accessor method for in_act_str attribute.
+         
+        @return string : The in_act_str attribute
+        @author
+        """
+        pass
+
+    def get_done_act(self):
+        """
+         Accessor method for done_act_str attribute.
+         
+        @return string : The done_act_str attribute
+        @author
+        """
+        pass

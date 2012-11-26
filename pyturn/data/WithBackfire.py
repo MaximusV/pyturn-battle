@@ -1,5 +1,5 @@
 from pyturn.data.ActionDecorator import ActionDecorator
-
+from pyturn.data.Character import Character
 
 class WithBackfire(ActionDecorator):
     """
@@ -33,31 +33,36 @@ class WithBackfire(ActionDecorator):
         #ActionDecorator.__init__(action)
         self.act = action
 
-    def execute(self, performer, target=None):
+    def get_operations(self):
         """
-         Perform the action. Semantically, performer performs the action on
-         target.
-
-        @param Character performer : The Character who will be the semantic
-                                     performer of the action
-        @param Character target : The Character upon whom the action should be
-                                  performed, if any
-        @return string : A list of strings representing the information about
-                         the action
+         Accessor method for operations attribute.
+         
+        @return list : The list of operations
         @author
         """
-        pre_results = self.act.execute(performer, target)
-        try:
-            pre_results[1] += ' However, this also backfires and negatively \
-affects %s.' % performer.name
-            pre_results[2] += ' %s\'s %s attribute also reduced by %i points!'
-            pre_results[2] = pre_results[2] % (performer.name,
-                            self.act.attr_str, self.act.increase_by / 2)
+        op = self.act.get_operations()
+        op.extend(Character.decr_attr)
+        return op
 
-            performer.decr_attr(self.act.attr_str, self.act.increase_by / 2)
+    def get_in_act(self):
+        """
+         Accessor method for in_act_str attribute.
+         
+        @return string : The in_act_str attribute
+        @author
+        """
+        in_act = self.act.get_in_act()
+        in_act += ' This backfires and negatively affects {performer}.'
+        return in_act
+        
 
-            return pre_results
-
-        except IndexError:
-            print 'Expected at least two result strings from Action'
-            print self.act.name
+    def get_done_act(self):
+        """
+         Accessor method for done_act_str attribute.
+         
+        @return string : The done_act_str attribute
+        @author
+        """
+        done_act = self.act.get_done_act()
+        done_act += ' {performer}\'s {attr} fell {value} points.'
+        return done_act

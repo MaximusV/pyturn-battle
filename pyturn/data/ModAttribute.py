@@ -2,7 +2,7 @@ from pyturn.data.Action import Action
 from pyturn.data.Character import Character
 
 
-class IncreaseAttribute (Action):
+class ModAttribute (Action):
 
     """
      Increase an attribute of a Character
@@ -28,9 +28,9 @@ class IncreaseAttribute (Action):
 
     attr_str  (private)
 
-     How much to increase the attribute by
+     How much to change the attribute by
 
-    increase_by  (private)
+    value  (private)
 
      Name of action
 
@@ -46,13 +46,40 @@ class IncreaseAttribute (Action):
                  name,
                  str_dict={'in': '', 'done': ''},
                  attr_str='',
-                 incr_by=1,
+                 value=0,
                  needs_target=False):
 
         self.name = name
         self.in_act_str = str_dict.get('in', '')
         self.done_act_str = str_dict.get('done', '')
-        self.operations = [Character.incr_attr, ]
+        self.operations = [Character.incr_attr]
         self.attr_str = attr_str
-        self.increase_by = incr_by
+        self.value = value
         self.needs_target = needs_target
+
+    def get_operations(self):
+        """
+         Accessor method for operations attribute.
+         
+        @return list : The list of operations
+        @author
+        """
+        return self.operations[:] # Returns a copy instead of actual attribute
+
+    def get_in_act(self):
+        """
+         Accessor method for in_act_str attribute.
+         
+        @return string : The in_act_str attribute
+        @author
+        """
+        return self.in_act_str[:] # Returns a copy instead of actual attribute
+
+    def get_done_act(self):
+        """
+         Accessor method for done_act_str attribute.
+         
+        @return string : The done_act_str attribute
+        @author
+        """
+        return self.done_act_str[:] # Returns a copy instead of actual attribute

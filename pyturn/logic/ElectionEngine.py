@@ -1,8 +1,8 @@
 from BattleEngine import BattleEngine
 from pyturn.data.PoliticalParty import PoliticalParty
 from pyturn.data.GameplayVariables import GameplayVariables
-from pyturn.data.IncreaseAttribute import IncreaseAttribute
-from pyturn.data.ReduceAttribute import ReduceAttribute
+from pyturn.data.ModAttribute import ModAttribute
+from pyturn.data.WithBackfire import WithBackfire
 from pyturn.logic.Game import *
 
 class ElectionEngine (BattleEngine):
@@ -53,24 +53,28 @@ class ElectionEngine (BattleEngine):
 
         self.vars.active_party = 1
         
-        action1 = IncreaseAttribute("Appeal", {'in':"%s is selling %s to the rich!", 
-            'done':"%s appealed to the rich! His popularity has increased!"}, 
-                                    'pop', 10, False)
-        action2 = ReduceAttribute("Defame", {'in':"%s is insulting %s publicly!", 
-            'done':"%s's popularity has fallen!"}, 
-                                    'pop', 10, True)
-        action3 = ReduceAttribute("Lie", {'in':"%s is lying to the public about %s's policy!", 
-            'done':"%s lied to the public! His entourage has decreased!"}, 
-                                    'ent', 50, True)
-        action4 = IncreaseAttribute("Legislate", {'in':"%s is legislating to make %s and his rich friends pay for everyone's healthcare!", 
-            'done':"%s appealed to the middle classes! His popularity has increased!"}, 
-                                    'pop', 10, False)
-        action5 = ReduceAttribute("Publish Birth Certificate", {'in':"%s is showing %s up by proving he's American!", 
-            'done':"%s's popularity has fallen!"}, 
-                                    'pop', 10, True)
-        action6 = ReduceAttribute("Respond To Disaster", {'in':"%s is responding to Hurricane Sandy by volunteering %s to help with relocation!", 
-            'done':"%s impressed the public, but his entourage have less to do so they have decreased numbers!"}, 
-                                    'ent', 50, False)
+        action1 = ModAttribute("Appeal", {'in':"{performer} is appealing to the rich!", 
+            'done':"{performer} appealed to the rich! His {attr} attribute has increased by {value}!"}, 
+                                    'popularity', 10, False)
+        action2 = ModAttribute("Defame", {'in':"{performer} is insulting {target} publicly!", 
+            'done':"{target}'s {attr} has fallen by {value}!"}, 
+                                    'popularity', -10, True)
+        action3 = ModAttribute("Lie", {'in':"{performer} is lying to the public about {target}'s policy!", 
+            'done':"{performer} lied to the public! His {attr} has decreased by {value}!"}, 
+                                    'entourage', -50, True)
+        action4 = ModAttribute("Legislate", {'in':"{performer} is legislating to make {target} and his rich friends pay for everyone's healthcare!", 
+            'done':"{performer} appealed to the middle classes! His {attr} attribute has increased by {value}!"}, 
+                                    'popularity', 10, True)
+        action5 = ModAttribute("Publish Birth Certificate", {'in':"{performer} is showing {target} up by proving he's American!", 
+            'done':"{target}'s {attr} has fallen by {value}!"}, 
+                                    'popularity', -10, True)
+        action6 = ModAttribute("Respond To Disaster", {'in':"{performer} is responding to Hurricane Sandy by volunteering to help with relocation!", 
+            'done':"{performer} impressed the public, but his {attr} have less to do so they have decreased by {value}!"}, 
+                                    'entourage', -50, False)
+        
+        # decorate the Lie action
+        action3 = WithBackfire(action3)
+        
         
         actions = {'Appeal':action1, 'Defame':action2, 'Lie':action3,
                    'Legislate':action4, 'Publish Birth Certificate':action5,
@@ -116,15 +120,21 @@ class ElectionEngine (BattleEngine):
         @author
         """
         results = ["display"]
+        format_dict = {'performer': performer.name,
+                       'target': target.name,
+                       'attr': act.attr_str,
+                       'value': abs(act.value)}
         
         if target:
-            act.operations[0](target, act.attr_str, act.increase_by)
-            results.append(act.in_act_str % (performer.name, target.name))
-            results.append(act.done_act_str % (target.name))
+            for op in act.operations:
+                op(target, act.attr_str, act.increase_by)
+                results.append(act.in_act_str % (performer.name, target.name))
+                results.append(act.done_act_str % (target.name))
         else:
-            act.operations[0](performer, act.attr_str, act.increase_by)
-            results.append(act.in_act_str % (performer.name, 'himself'))
-            results.append(act.done_act_str % (performer.name))
+            for op in act.operations:
+                op(performer, act.attr_str, act.increase_by)
+                results.append(act.in_act_str % (performer.name, 'himself'))
+                results.append(act.done_act_str % (performer.name))
             
         return results
 

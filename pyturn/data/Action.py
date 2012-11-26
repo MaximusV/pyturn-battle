@@ -12,11 +12,11 @@ class Action(object):
 
      The string to display during the action
 
-    in_act_string  (private)
+    in_act_str  (private)
 
      The string to display after the action
 
-    done_act_string  (private)
+    done_act_str  (private)
 
      List of function pointers to functions that make up the action
 
@@ -35,6 +35,33 @@ class Action(object):
         @param Character performer : The Character who will be the semantic performer of the action
         @param Character target : The Chracter upon whom the action should be performed, if any
         @return string : A list of strings representing the information about the action
+        @author
+        """
+        pass
+
+    def get_operations(self):
+        """
+         Accessor method for operations attribute.
+         
+        @return list : The list of operations
+        @author
+        """
+        pass
+
+    def get_in_act(self):
+        """
+         Accessor method for in_act_str attribute.
+         
+        @return string : The in_act_str attribute
+        @author
+        """
+        pass
+
+    def get_done_act(self):
+        """
+         Accessor method for done_act_str attribute.
+         
+        @return string : The done_act_str attribute
         @author
         """
         pass
