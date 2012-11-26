@@ -1,5 +1,5 @@
 from State import *
-from codes.logic.Game import SWITCH_FLAG, CHOOSE_FLAG, DISPLAY_FLAG, QUIT_FLAG
+from pyturn.logic.Game import SWITCH_FLAG, CHOOSE_FLAG, DISPLAY_FLAG, QUIT_FLAG
 
 class MenuState (State):
 

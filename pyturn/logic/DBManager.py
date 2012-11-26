@@ -1,4 +1,4 @@
-from codes.observer.IObserver import IObserver
+from pyturn.observer.IObserver import IObserver
 
 class DBManager (IObserver):
 

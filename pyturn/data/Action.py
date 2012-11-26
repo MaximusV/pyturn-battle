@@ -1,4 +1,4 @@
-from codes.data import Character
+from pyturn.data.Character import Character
 
 
 class Action(object):

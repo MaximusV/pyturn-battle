@@ -1,8 +1,8 @@
 from Game import Game, SWITCH_FLAG, CHOOSE_FLAG, DISPLAY_FLAG, QUIT_FLAG
 from GameState import GameState
 from MenuState import MenuState
-from codes.presentation.CLIPresentation import CLIPresentation
-from codes.presentation.GUIPresentation import GUIPresentation
+from pyturn.presentation.CLIPresentation import CLIPresentation
+from pyturn.presentation.GUIPresentation import GUIPresentation
 from sys import exit
 
 
@@ -29,7 +29,7 @@ class ElectionGame (Game):
     def __init__(self):
         self.states = [self.create_state('menu'), self.create_state('game')]
         self.presentation = CLIPresentation()
-        self.presentation = GUIPresentation()
+        #self.presentation = GUIPresentation()
     def turn(self):
         """
          Method to call each turn in the Election game

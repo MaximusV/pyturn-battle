@@ -1,4 +1,4 @@
-from codes.observer.ISubject import ISubject
+from pyturn.observer.ISubject import ISubject
 import Character
 
 class Party (ISubject, ISubject):

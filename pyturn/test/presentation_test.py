@@ -1,8 +1,8 @@
 import unittest
-from codes.presentation.CLIPresentation import CLIPresentation
-from codes.presentation.GUIPresentation import GUIPresentation
-from codes.presentation.CLInterface import CLInterface
-from codes.presentation.GUInterface import GUInterface
+from pyturn.presentation.CLIPresentation import CLIPresentation
+from pyturn.presentation.GUIPresentation import GUIPresentation
+from pyturn.presentation.CLInterface import CLInterface
+from pyturn.presentation.GUInterface import GUInterface
 
 class TestPresentation(unittest.TestCase):
     

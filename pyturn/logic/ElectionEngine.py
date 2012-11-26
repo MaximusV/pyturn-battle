@@ -1,9 +1,9 @@
 from BattleEngine import BattleEngine
-from codes.data.PoliticalParty import PoliticalParty
-from codes.data.GameplayVariables import GameplayVariables
-from codes.data.IncreaseAttribute import IncreaseAttribute
-from codes.data.ReduceAttribute import ReduceAttribute
-from codes.logic.Game import *
+from pyturn.data.PoliticalParty import PoliticalParty
+from pyturn.data.GameplayVariables import GameplayVariables
+from pyturn.data.IncreaseAttribute import IncreaseAttribute
+from pyturn.data.ReduceAttribute import ReduceAttribute
+from pyturn.logic.Game import *
 
 class ElectionEngine (BattleEngine):
 

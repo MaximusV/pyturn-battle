@@ -1,4 +1,4 @@
-from codes.observer.ISubject import ISubject
+from pyturn.observer.ISubject import ISubject
 import operator as operate
 
 class Character(ISubject):

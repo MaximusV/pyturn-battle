@@ -1,5 +1,5 @@
-from codes.data.Action import Action
-from codes.data.Character import Character
+from pyturn.data.Action import Action
+from pyturn.data.Character import Character
 
 class ReduceAttribute (Action):
 

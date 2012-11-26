@@ -1,4 +1,4 @@
-from codes.data.ActionDecorator import ActionDecorator
+from pyturn.data.ActionDecorator import ActionDecorator
 
 
 class OnTheInternet (ActionDecorator):

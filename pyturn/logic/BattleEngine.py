@@ -1,5 +1,5 @@
-from codes.data.Party import Party
-from codes.data.GameplayVariables import GameplayVariables
+from pyturn.data.Party import Party
+from pyturn.data.GameplayVariables import GameplayVariables
 
 class BattleEngine(object):
 

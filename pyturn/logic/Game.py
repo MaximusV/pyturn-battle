@@ -1,6 +1,6 @@
 from State import State
 from GameState import *
-from codes.presentation.GamePresentation import GamePresentation
+from pyturn.presentation.GamePresentation import GamePresentation
 
 SWITCH_FLAG = "switch"
 QUIT_FLAG = "quit"

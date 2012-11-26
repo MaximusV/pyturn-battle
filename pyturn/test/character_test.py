@@ -1,5 +1,5 @@
 import unittest
-from codes.data import Character
+from pyturn.data import Character
 
 
 class TestCharacter(unittest.TestCase):

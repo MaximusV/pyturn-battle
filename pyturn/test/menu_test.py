@@ -1,5 +1,5 @@
-from codes.presentation.menu import menu
-from codes.presentation.menu_item import menu_item
+from pyturn.presentation.menu import menu
+from pyturn.presentation.menu_item import menu_item
 
 class menu_test:
     m_items = []

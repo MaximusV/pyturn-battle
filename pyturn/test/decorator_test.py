@@ -1,7 +1,7 @@
 import unittest
-from codes.data.Character import Character
-from codes.data.ReduceAttribute import ReduceAttribute
-from codes.data.WithBackfire import WithBackfire
+from pyturn.data.Character import Character
+from pyturn.data.ReduceAttribute import ReduceAttribute
+from pyturn.data.WithBackfire import WithBackfire
 
 
 class decorator_test(unittest.TestCase):
