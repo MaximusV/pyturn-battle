@@ -71,6 +71,6 @@ class GameState (State):
          Finish the current turn.
         @author
         """
-        self.engine.end_turn()
+        return self.engine.end_turn()
 
 

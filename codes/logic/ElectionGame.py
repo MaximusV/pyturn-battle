@@ -73,8 +73,13 @@ class ElectionGame (Game):
                     self.states[1] = tmp
                 elif turn_flag == -1:
                     # Quit
-                    exit(0)                
-                self.states[0].end_turn()
+                    exit(0)              
+                  
+                end = self.states[0].end_turn()
+                if end is not None and end[0] == -1:
+                    end.extend(["Game over, man!", "GAME OVER!"])
+                    self.presentation.display(end)
+                    exit(0)
                 self.presentation.display(self.states[0].get_state_desc())
             except ValueError:
                 self.presentation.display(["Invalid input!"])

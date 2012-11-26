@@ -107,11 +107,23 @@ class ElectionEngine (BattleEngine):
         #print ch_act
         return ch_act
 
+    def dead(self):
+        for i in self.vars.parties:
+            if i.dead():
+                return [i.name + " are now out of the race!"]
+
     def end_turn(self):
+        d = self.dead()
+        if d is not None:
+            res = [-1]
+            res.extend(d)
+            #print res
+            return res
         if self.vars.active_party < len(self.vars.parties) -1:
             self.vars.active_party = self.vars.active_party+1
         else:
             self.vars.active_party = 0
+        return [1]
             
     def get_desc(self):
         return self.vars.parties[self.vars.active_party].get_state()
