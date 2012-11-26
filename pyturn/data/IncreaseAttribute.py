@@ -1,6 +1,7 @@
 from pyturn.data.Action import Action
 from pyturn.data.Character import Character
 
+
 class IncreaseAttribute (Action):
 
     """
@@ -34,13 +35,19 @@ class IncreaseAttribute (Action):
      Name of action
 
     name  (private)
+    
+     Bool to indicate whether action expects target or not
+
+    needs_target  (public)
 
     """
 
     def __init__(self,
                  name,
                  str_dict={'in': '', 'done': ''},
-                 attr_str='', incr_by=1,):
+                 attr_str='',
+                 incr_by=1,
+                 needs_target=False):
 
         self.name = name
         self.in_act_str = str_dict.get('in', '')
@@ -48,3 +55,4 @@ class IncreaseAttribute (Action):
         self.operations = [Character.incr_attr, ]
         self.attr_str = attr_str
         self.increase_by = incr_by
+        self.needs_target = needs_target

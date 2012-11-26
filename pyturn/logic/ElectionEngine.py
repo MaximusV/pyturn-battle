@@ -55,22 +55,22 @@ class ElectionEngine (BattleEngine):
         
         action1 = IncreaseAttribute("Appeal", {'in':"%s is selling %s to the rich!", 
             'done':"%s appealed to the rich! His popularity has increased!"}, 
-                                    'pop', 10)
+                                    'pop', 10, False)
         action2 = ReduceAttribute("Defame", {'in':"%s is insulting %s publicly!", 
             'done':"%s's popularity has fallen!"}, 
-                                    'pop', 10)
+                                    'pop', 10, True)
         action3 = ReduceAttribute("Lie", {'in':"%s is lying to the public about %s's policy!", 
             'done':"%s lied to the public! His entourage has decreased!"}, 
-                                    'ent', 50)
+                                    'ent', 50, True)
         action4 = IncreaseAttribute("Legislate", {'in':"%s is legislating to make %s and his rich friends pay for everyone's healthcare!", 
             'done':"%s appealed to the middle classes! His popularity has increased!"}, 
-                                    'pop', 10)
+                                    'pop', 10, False)
         action5 = ReduceAttribute("Publish Birth Certificate", {'in':"%s is showing %s up by proving he's American!", 
             'done':"%s's popularity has fallen!"}, 
-                                    'pop', 10)
+                                    'pop', 10, True)
         action6 = ReduceAttribute("Respond To Disaster", {'in':"%s is responding to Hurricane Sandy by volunteering %s to help with relocation!", 
             'done':"%s impressed the public, but his entourage have less to do so they have decreased numbers!"}, 
-                                    'ent', 50)
+                                    'ent', 50, False)
         
         actions = {'Appeal':action1, 'Defame':action2, 'Lie':action3,
                    'Legislate':action4, 'Publish Birth Certificate':action5,

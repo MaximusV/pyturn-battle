@@ -1,6 +1,7 @@
 from pyturn.data.Action import Action
 from pyturn.data.Character import Character
 
+
 class ReduceAttribute (Action):
 
     """
@@ -34,15 +35,24 @@ class ReduceAttribute (Action):
      Name of action
 
     name  (private)
+    
+     Bool to indicate whether action expects target or not
+
+    needs_target  (public)
 
     """
     
-    def __init__(self, name, str_dict={'in':'', 'done':''}, attr_str='', reduce_by=1,):
+    def __init__(self,
+                 name,
+                 str_dict={'in':'', 'done':''},
+                 attr_str='',
+                 reduce_by=1,
+                 needs_target=False):
+        
             self.name = name
             self.in_act_str = str_dict.get('in', '')
             self.done_act_str = str_dict.get('done', '')
             self.operations = [Character.decr_attr,]
             self.attr_str = attr_str
             self.increase_by = reduce_by
-
-
+            self.needs_target = needs_target
