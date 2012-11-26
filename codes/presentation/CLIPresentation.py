@@ -1,22 +1,22 @@
 from GamePresentation import GamePresentation
-from GameCLI import GameCLI
+from CLInterface import CLInterface
 
 class CLIPresentation (GamePresentation):
 
     """
-     Implementation of GamePresentation that has GameCLI as its interface
+     Implementation of GamePresentation that has CLInterface as its interface
 
     :author: James Heslin (PROGRAM_IX)
     """
     
     def __init__(self):
-        self.game_interface = GameCLI()
+        self.game_interface = CLInterface()
 
     def display(self, message):
         """
-         Implementation of display that delegates to its GameCLI instance
+         Implementation of display that delegates to its CLInterface instance
 
-        @param string message : Message to be passed to GameCLI
+        @param string message : Message to be passed to CLInterface
         @return  :
         @author
         """
@@ -24,9 +24,9 @@ class CLIPresentation (GamePresentation):
 
     def get_choice(self, options):
         """
-         Implementaion of get_choice that delegates to its GameCLI instance
+         Implementaion of get_choice that delegates to its CLInterface instance
 
-        @param string options : List of options to pass to the GameCLI 
+        @param string options : List of options to pass to the CLInterface 
         @return int :
         @author
         """
