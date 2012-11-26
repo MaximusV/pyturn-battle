@@ -4,9 +4,13 @@
 An Open-Source Turn-Based Battle Framework}
 \author{Max Vizard | 09006863\\
 		James Heslin | 09006132\\}
+\date{November 23, 2012}
 \begin{document}
 
 \maketitle
+
+\tableofcontents{}
+\pagebreak
 
 \section{Narrative}
 You and a small team of friends have decided to construct an open-source framework/engine for turn based, party-centric battle games. A sample implementation should be included to help other developers understand the framework. 
@@ -40,5 +44,12 @@ You and a small team of friends have decided to construct an open-source framewo
 
 \section{Design Patterns}
 	\subsection{Bridge Design Pattern}
+	Our project is quite a simple game framework, which makes it ideal for multiple platforms. Not wanting to clutter our logic classes with switch cases depending on platform, we researched patterns that would allow us to separate display from logic easily. The Bridge Design Pattern is a method of separating platform- or implementation-specific functionality from independent functionality. It is a good example of the software design principle, \emph{encapsulate what varies}. In the ideal case, it decouples the abstraction from the implementation altogether. One side of the 'bridge' is our independent implementation, which has a reference to an abstraction (in the form of an interface or abstract class). This is the other side of the bridge. In our independent implementation, wherever we would normally need to differ our implementation based on the variables in the system, we can instead call upon the abstraction to perform the system-specific functions. We have to trust the abstraction and its subclasses to do this. An example of where to use the Bridge pattern is in programming a game that should be playable using a terminal emulator or through a graphical window. The independent implementation might be a GameLogic abstract class, and the display abstraction a GameDisplay abstract class. The bridge separates any display code from the methods (such as \texttt{display("some text")}), which are called by GameLogic. Not only this, but the same \texttt{GameDisplay.display()} calls will display text in a terminal emulator, a GTK+ window, or whatever graphical user interface subclass is required. An alternative to the Bridge pattern is the Adaptor, which is similar, but distinct. While the Bridge has its abstraction and implementation tightly coupled, the Adaptor places another class or interface between the two, acting as an intermediary. We decided not to use the Adaptor, as more than one layer between the implementation and the abstraction is not necessary in our application. The Bridge supports our quality attributes of comprehensibility, portability, and extensibility. Keeping logic code free of out-of-band functionality like displaying text onscreen allows our code to be much more understandable. The Bridge is also inherently supportive of portability and extensibility, because it makes it easy for client developers to change or add implementations on the abstraction side.
+	
+	\subsection{State Design Pattern}
+	Most games of any kind have multiple states, which change how they behave. The State Design Pattern aims to encapsulate those states and abstract away the different behaviours. In our game, we use the State pattern to manage the behaviour of two different scenarios: the user in the menu, before starting the game, and the user playing the game. Both states implement the same interface, allowing the main game class not to care which state is which for the purposes of getting input and displaying output. We could have used the similar Strategy pattern here, but Strategy is more useful for doing one thing than it is for modelling a scenario. The State pattern fits well in our application because it supports our quality attributes of extensibility and comprehensibility. Client developers can easily add new states to the game if they want to model additional scenarios. In addition to this, the State pattern is quite easy to understand, so it lowers the barrier to newer developers wishing to use our framework.
+	
+	\subsection{Delegates}
+	Delegation is a method of programming to interfaces, rather than implementation. At its most basic, compositional delegation involves class A calling a method in class B, which delegates to a method in class C. Class A never knows that C exists, which keeps C's logic well-encapsulated. We use delegation a lot in our game, as it supports our non-functional requirement of code quality. Delegation allows for an application to be decomposed into modules and layers quite easily, and then for these modules and layers to call each other in a chain in order to perform a function. For example, in our game state class, we call a method that gets all the available options for the user at this particular moment. Unbeknownst to the game state class, the game engine retrieves the options from the game variables class. This also fits well with our multi-tiered architectural pattern. 
 	
 \end{document}

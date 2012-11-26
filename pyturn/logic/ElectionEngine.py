@@ -98,10 +98,10 @@ class ElectionEngine (BattleEngine):
         
         if act.needs_target:
             if len(self.vars.parties) == 2:
-               for i in xrange(len(self.vars.parties)):
-                   if not i == self.vars.active_party:
-                       target_party = self.vars.parties[i]
-                       target = target_party.get_active_member()
+                for i in xrange(len(self.vars.parties)):
+                    if not i == self.vars.active_party:
+                        target_party = self.vars.parties[i]
+                        target = target_party.get_active_member()
                        
             else:
                 # Code for three or more parties here
