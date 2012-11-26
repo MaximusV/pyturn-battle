@@ -33,15 +33,15 @@ class ElectionEngine (BattleEngine):
         """
         self.vars = GameplayVariables()
         partyA = self.create_party("Republicans")
-        charA = partyA.create_character("Mitt Romney", {'pop':50, 'ent':500,
-                                                        'inv':1000},
+        charA = partyA.create_character("Mitt Romney", {'popularity':50, 'entourage':500,
+                                                        'investment':1000},
                                         ["Appeal", "Defame", "Lie"])
         partyA.add_member(charA)
         partyA.set_active_member(charA)
         
         partyB = self.create_party("Democrats")
-        charB = partyB.create_character("Barack Obama", {'pop':50, 'ent':500,
-                                                         'inv':1000},
+        charB = partyB.create_character("Barack Obama", {'popularity':50, 'entourage':500,
+                                                         'investment':1000},
                                         ["Legislate", 
                                          "Publish Birth Certificate", 
                                          "Respond To Disaster"])
@@ -54,16 +54,16 @@ class ElectionEngine (BattleEngine):
         self.vars.active_party = 1
         
         action1 = ModAttribute("Appeal", {'in':"{performer} is appealing to the rich!", 
-            'done':"{performer} appealed to the rich! His {attr} attribute has increased by {value}!"}, 
+            'done':"{performer} appealed to the rich! His {attr} has increased by {value}!"}, 
                                     'popularity', 10, False)
         action2 = ModAttribute("Defame", {'in':"{performer} is insulting {target} publicly!", 
             'done':"{target}'s {attr} has fallen by {value}!"}, 
                                     'popularity', -10, True)
         action3 = ModAttribute("Lie", {'in':"{performer} is lying to the public about {target}'s policy!", 
-            'done':"{performer} lied to the public! His {attr} has decreased by {value}!"}, 
+            'done':"{performer} lied to the public about {target}! {target}\'s {attr} has decreased by {value}!"}, 
                                     'entourage', -50, True)
         action4 = ModAttribute("Legislate", {'in':"{performer} is legislating to make {target} and his rich friends pay for everyone's healthcare!", 
-            'done':"{performer} appealed to the middle classes! His {attr} attribute has increased by {value}!"}, 
+            'done':"{performer} appealed to the middle classes! His {attr} has increased by {value}!"}, 
                                     'popularity', 10, True)
         action5 = ModAttribute("Publish Birth Certificate", {'in':"{performer} is showing {target} up by proving he's American!", 
             'done':"{target}'s {attr} has fallen by {value}!"}, 
@@ -96,7 +96,8 @@ class ElectionEngine (BattleEngine):
         target = None
         # Hypothetically, we would call get_char_choice here somehow
         
-        if act.needs_target:
+        if act.get_needs_target():
+            print "Needs target"
             if len(self.vars.parties) == 2:
                 for i in xrange(len(self.vars.parties)):
                     if not i == self.vars.active_party:
@@ -119,24 +120,7 @@ class ElectionEngine (BattleEngine):
         @return list : List of strings containing output about the action
         @author
         """
-        results = ["display"]
-        format_dict = {'performer': performer.name,
-                       'target': target.name,
-                       'attr': act.attr_str,
-                       'value': abs(act.value)}
-        
-        if target:
-            for op in act.operations:
-                op(target, act.attr_str, act.increase_by)
-                results.append(act.in_act_str % (performer.name, target.name))
-                results.append(act.done_act_str % (target.name))
-        else:
-            for op in act.operations:
-                op(performer, act.attr_str, act.increase_by)
-                results.append(act.in_act_str % (performer.name, 'himself'))
-                results.append(act.done_act_str % (performer.name))
-            
-        return results
+        return act.execute(performer, target)
 
 
     def create_party(self, name):

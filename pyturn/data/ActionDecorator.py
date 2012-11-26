@@ -71,3 +71,12 @@ class ActionDecorator (Action):
         @author
         """
         pass
+
+    def get_needs_target(self):
+        """
+         Accessor method for needs_target attribute.
+         
+        @return boolean : Whether the Action needs a target
+        @author
+        """
+        pass

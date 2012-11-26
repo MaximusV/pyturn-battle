@@ -122,5 +122,5 @@ class Character(ISubject):
             print 'Attribute already exists'
         
     def dead(self):
-        if self.attributes_dict.get('pop') < 25:
+        if self.attributes_dict.get('popularity') < 25:
             return True
