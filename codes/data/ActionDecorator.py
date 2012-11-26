@@ -1,5 +1,6 @@
-from codes.data import Action
-from codes.data import Character
+from codes.data.Action import Action
+from codes.data.Character import Character
+
 
 class ActionDecorator (Action):
 
@@ -24,19 +25,23 @@ class ActionDecorator (Action):
     in_act_string  (private)
 
     """
-    
-    def __init__(self, action):
-        self.act = action
 
-    def execute(self, performer, target):
+    #def __init__(self, action):
+    #    self.act = action
+
+    def execute(self, performer, target=None):
         """
-         Perform the action. Semantically, performer performs the action on target.
+         Perform the action. Semantically, performer performs the action on
+         target.
 
-        @param Character performer : The Character who will be the semantic performer of the action
-        @param Character target : The Chracter upon whom the action should be performed, if any
-        @return string : A list of strings representing the information about the action
+        @param Character performer : The Character who will be the semantic
+                                     performer of the action
+        @param Character target : The Chracter upon whom the action should be
+                                  performed, if any
+        @return list : A list of strings representing the information about
+                        the action
         @author
         """
-        return self.act.execute()
+        #return self.act.execute(performer, target)
 
 

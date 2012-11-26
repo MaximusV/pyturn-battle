@@ -1,5 +1,6 @@
 from codes.data import Character
 
+
 class Action(object):
 
     """
@@ -23,7 +24,7 @@ class Action(object):
     operations  (private)
 
      Name of action
-     
+
     name  (private)
 
     """
@@ -38,6 +39,3 @@ class Action(object):
         @author
         """
         pass
-
-
-
