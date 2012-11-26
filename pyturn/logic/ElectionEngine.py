@@ -82,13 +82,28 @@ class ElectionEngine (BattleEngine):
          Performs an action
 
         @param int action : An integer representing the action to be performed
-        @return string :
+        @return list : List of strings representing the results, with a flag
+                       in index 0 representing the type of result
         @author
         """
-        #print "Action", action
         act = self.vars.get_action(action)
-        #print act.name
-        return (self.execute(act, self.vars.parties[self.vars.active_party].get_active_member()))
+        active_party = self.vars.parties[self.vars.active_party]
+        performer = active_party.get_active_member()
+        target = None
+        # Hypothetically, we would call get_char_choice here somehow
+        
+        if act.needs_target:
+            if len(self.vars.parties) == 2:
+               for i in xrange(len(self.vars.parties)):
+                   if not i == self.vars.active_party:
+                       target_party = self.vars.parties[i]
+                       target = target_party.get_active_member()
+                       
+            else:
+                # Code for three or more parties here
+                pass
+            
+        return (self.execute(act, performer, target))
 
     def execute(self, act, performer, target=None):
         """
