@@ -1,4 +1,4 @@
-from codes.data.Character import Character
+from codes.data import Character
 
 
 class Action(object):
