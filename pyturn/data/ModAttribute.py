@@ -57,6 +57,34 @@ class ModAttribute (Action):
         self.value = value
         self.needs_target = needs_target
 
+    def execute(self, performer, target=None):
+        """
+         Do the action: Semantically, the performer is performing the action on
+         the target
+
+        @param Character performer : The Character performing the action
+        @param Character target : The target of the action
+        @return list : List of strings containing output about the action
+        @author
+        """
+        results = ["display"]
+        
+        format_dict = {'performer': performer.name,
+                       'attr': self.attr_str,
+                       'value': abs(self.value)}
+
+        if target:
+            format_dict['target'] = target.name
+            self.operations[0](target, self.attr_str, self.value)
+            results.append(self.in_act_str.format(**format_dict))
+            results.append(self.done_act_str.format(**format_dict))
+        else:
+            self.operations[0](performer, self.attr_str, self.value)
+            results.append(self.in_act_str.format(**format_dict))
+            results.append(self.done_act_str.format(**format_dict))
+
+        return results
+
     def get_operations(self):
         """
          Accessor method for operations attribute.
@@ -83,3 +111,12 @@ class ModAttribute (Action):
         @author
         """
         return self.done_act_str[:] # Returns a copy instead of actual attribute
+    
+    def get_needs_target(self):
+        """
+         Accessor method for needs_target attribute.
+         
+        @return boolean : Whether the Action needs a target
+        @author
+        """
+        return self.needs_target
