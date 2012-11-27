@@ -141,11 +141,22 @@ class ElectionEngine (BattleEngine):
         return ch_act
 
     def dead(self):
+        """
+         Method to check if all members of the Party are 'dead'
+        
+        @return bool : Whether all members are dead
+        @author
+        """
         for i in self.vars.parties:
             if i.dead():
                 return [i.name + " are now out of the race!"]
 
     def end_turn(self):
+        """
+         Method to be called at the end of each turn
+         
+        @return list : A list containing a number and possibly a message
+        """
         d = self.dead()
         if d is not None:
             res = [-1]
@@ -159,6 +170,11 @@ class ElectionEngine (BattleEngine):
         return [1]
             
     def get_desc(self):
+        """
+         Method to get the state of the active party
+        
+        @return list : Information about the state of the active party
+        """
         return self.vars.parties[self.vars.active_party].get_state()
 
 # NOT USING THIS YET - It's wrong
