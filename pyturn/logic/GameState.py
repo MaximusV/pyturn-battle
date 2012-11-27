@@ -27,7 +27,7 @@ class GameState (State):
     
     def __init__(self):
         self.engine = self.create_engine()
-        self.db_manager = DBManager()
+        #self.db_manager = DBManager()
 
     def get_options(self):
         """

@@ -3,6 +3,7 @@ from pyturn.data.PoliticalParty import PoliticalParty
 from pyturn.data.GameplayVariables import GameplayVariables
 from pyturn.data.ModAttribute import ModAttribute
 from pyturn.data.WithBackfire import WithBackfire
+from pyturn.logic.DBManager import DBManager
 from pyturn.logic.Game import *
 
 class ElectionEngine (BattleEngine):
@@ -31,7 +32,12 @@ class ElectionEngine (BattleEngine):
         @return  :
         @author
         """
+        # setup subject and observer
         self.vars = GameplayVariables()
+        self.db = DBManager(self.vars)
+        self.vars.attach(self.db)
+        
+        
         partyA = self.create_party("Republicans")
         charA = partyA.create_character("Mitt Romney", {'popularity':50, 'entourage':500,
                                                         'investment':1000},
@@ -80,6 +86,10 @@ class ElectionEngine (BattleEngine):
                    'Legislate':action4, 'Publish Birth Certificate':action5,
                    'Respond To Disaster':action6}
         self.vars.actions_dict = actions
+        
+        self.vars.notify()
+        
+        # GAAAME ON!
 
     def perform_action(self, action):
         """
@@ -90,6 +100,8 @@ class ElectionEngine (BattleEngine):
                        in index 0 representing the type of result
         @author
         """
+        self.vars.notify()
+        
         act = self.vars.get_action(action)
         active_party = self.vars.parties[self.vars.active_party]
         performer = active_party.get_active_member()
@@ -159,6 +171,8 @@ class ElectionEngine (BattleEngine):
         """
         d = self.dead()
         if d is not None:
+            # GAME OVER MAN, GAME OVER
+            self.vars.detach(self.db)
             res = [-1]
             res.extend(d)
             #print res
