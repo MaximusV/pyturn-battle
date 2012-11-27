@@ -5,7 +5,7 @@ class Action(object):
     """
      Represents an action performed by a Character on a Character
 
-     :author: Max Vizard
+     @author: Max Vizard
     """
 
     """ ATTRIBUTES

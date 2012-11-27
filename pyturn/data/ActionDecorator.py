@@ -7,7 +7,7 @@ class ActionDecorator (Action):
     """
      Decorates an Action with additional functionality
 
-    :author: Max Vizard
+    @author: Max Vizard
     """
 
     """ ATTRIBUTES
@@ -34,13 +34,16 @@ class ActionDecorator (Action):
          Perform the action. Semantically, performer performs the action on
          target.
 
-        @param Character performer : The Character who will be the semantic
-                                     performer of the action
-        @param Character target : The Chracter upon whom the action should be
-                                  performed, if any
-        @return list : A list of strings representing the information about
+         @type performer: Character
+         @param performer: The Character who will be the semantic
+                                performer of the action
+         @type target: Character
+         @param target: The Character upon whom the action should be
+                                performed, if any
+         @rtype: list
+         @return: A list of strings representing the information about
                         the action
-        @author
+         @author: Max Vizard
         """
         pass
         #return self.act.execute(performer, target)
@@ -49,8 +52,9 @@ class ActionDecorator (Action):
         """
          Accessor method for operations attribute.
          
-        @return list : The list of operations
-        @author
+         @rtype: list
+         @return: The list of operations
+         @author: Max Vizard
         """
         pass
 
@@ -58,8 +62,9 @@ class ActionDecorator (Action):
         """
          Accessor method for in_act_str attribute.
          
-        @return string : The in_act_str attribute
-        @author
+         @rtype: string
+         @return: The in_act_str attribute
+         @author: Max Vizard
         """
         pass
 
@@ -67,8 +72,9 @@ class ActionDecorator (Action):
         """
          Accessor method for done_act_str attribute.
          
-        @return string : The done_act_str attribute
-        @author
+         @rtype: string
+         @return: The done_act_str attribute
+         @author: Max Vizard
         """
         pass
 
@@ -76,7 +82,8 @@ class ActionDecorator (Action):
         """
          Accessor method for needs_target attribute.
          
-        @return boolean : Whether the Action needs a target
-        @author
+         @rtype: boolean
+         @return: Whether the Action needs a target
+         @author: Max Vizard
         """
         pass
