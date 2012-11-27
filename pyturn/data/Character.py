@@ -1,12 +1,11 @@
-from pyturn.observer.ISubject import ISubject
 import operator as operate
 
-class Character(ISubject):
+class Character:
 
     """
      Stores and manages data relating to an individual character and their attributes
 
-     :author: Max Vizard
+     @author: Max Vizard
     """
 
     """ ATTRIBUTES
@@ -44,9 +43,26 @@ class Character(ISubject):
         Character.CHARACTER_COUNT += 1
 
     def get_action(self, a_int):
+        """
+         Gets the action represented by the input
+         
+         @type a_int: int
+         @param a_int: An integer representing an Action
+         @rtype: Action
+         @return: The Action represented by the input
+         @author: Max Vizard
+        """
         return self.actions_list[a_int]
     
     def get_state(self):
+        """
+         Gets the current state of the Character
+         
+         @rtype: list
+         @return: A list of strings representing the Character's
+                     current state
+         @author: Max Vizard
+        """
         a = []
         for i in self.attributes_dict:
             a.append(i+" "+str(self.attributes_dict[i]))
@@ -56,9 +72,9 @@ class Character(ISubject):
         """
          Remove an attribute from the character's dict
 
-        @param string name : Name of attribute to remove
-        @return void :
-        @author 
+         @type name: string
+         @param name: Name of attribute to remove
+         @author: Max Vizard 
         """
         del self.attributes_dict[name]
 
@@ -66,10 +82,11 @@ class Character(ISubject):
         """
          Increase value of an attribute in the character's dict
 
-        @param string name : Name of attribute
-        @param int value : Value to increase the attribute by
-        @return void :
-        @author
+         @type name: string
+         @param name: Name of attribute
+         @type value: int
+         @param value: Value to increase the attribute by
+         @author: Max Vizard
         """
         try:
             self.attributes_dict[name] += value
@@ -80,10 +97,11 @@ class Character(ISubject):
         """
          Decrease value of an attribute in the character's dict
 
-        @param string name : Name of attribute to decrease
-        @param int value : Value to decrease attribute by
-        @return void :
-        @author
+         @type name: string
+         @param name: Name of attribute to decrease
+         @type value: int
+         @param value: Value to decrease attribute by
+         @author: Max Vizard
         """
         try:
             self.attributes_dict[name] -= value
@@ -95,11 +113,13 @@ class Character(ISubject):
         """
          Change value of an attribute in the character's dict using an operator
 
-        @param string name : Name of attribute to modify
-        @param int value : Value to modify the attribute by
-        @param char operator : Operator to modify the attribute by
-        @return void :
-        @author
+         @type name: string
+         @param name: Name of attribute to modify
+         @type value: int
+         @param value: Value to modify the attribute by
+         @type operator: char
+         @param operator: Operator to modify the attribute by
+         @author: Max Vizard
         """
         op_dict = {'+': operate.add,'-': operate.sub, '*': operate.mul, '/': operate.div }
         try:
@@ -111,10 +131,11 @@ class Character(ISubject):
         """
          Add an attribute to the character's dict
 
-        @param int value : Value of attribute
-        @param string name : Name of attribute
-        @return void :
-        @author
+         @type value: int
+         @param value: Value of attribute
+         @type name: string
+         @param name: Name of attribute
+         @author: Max Vizard
         """
         if not self.attributes_dict[name]:
             self.attributes_dict[name] = value
