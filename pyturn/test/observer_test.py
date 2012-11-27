@@ -34,13 +34,15 @@ class decorator_test(unittest.TestCase):
         self.vars.attach(self.db)
         
         dbs_last_subject = (self.db.last_sub, )
+        #print vars(dbs_last_subject)
         self.vars.active_party = 666
         
         print 'Calling notify on self.vars'
         self.vars.notify()
         
-        self.assertIs(dbs_last_subject[0].active_party,
-                         self.db.last_sub.active_party)
+        self.assertNotEqual(dbs_last_subject[0],
+                         self.db.last_sub)
+        print 'Asserted that DBManagers instance of vars has changed'
         
 
 if __name__ == "__main__":

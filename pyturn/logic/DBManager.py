@@ -1,4 +1,5 @@
 from pyturn.observer.IObserver import IObserver
+import copy
 
 class DBManager (IObserver):
 
@@ -9,7 +10,7 @@ class DBManager (IObserver):
     """
 
     def __init__(self, init_sub):
-        self.last_sub = init_sub
+        self.last_sub = copy.deepcopy(init_sub)
 
     def update(self, sub):
         """
@@ -19,9 +20,14 @@ class DBManager (IObserver):
         @return  :
         @author
         """
-        self.last_sub = sub
+        self.last_sub = copy.deepcopy(sub)
         
         # print 'Update called on DB_Manager'
+    
+    def __str__(self):
+        return str(self.__dict__)
 
+    def __cmp__(self, other): 
+        return self.__dict__ == other.__dict__
 
 
