@@ -5,7 +5,7 @@ class Action(object):
     """
      Represents an action performed by a Character on a Character
 
-    :author: Max Vizard
+     :author: Max Vizard
     """
 
     """ ATTRIBUTES
@@ -32,19 +32,22 @@ class Action(object):
         """
          Perform the action. Semantically, performer performs the action on target.
 
-        @param Character performer : The Character who will be the semantic performer of the action
-        @param Character target : The Chracter upon whom the action should be performed, if any
-        @return string : A list of strings representing the information about the action
-        @author
+         @type performer: Character
+         @param performer: The Character who will be the semantic performer of the action
+         @type target: Character
+         @param target: The Character upon whom the action should be performed, if any
+         @rtype: list
+         @return: A list of strings representing the information about the action
+         @author: Max Vizard
         """
         pass
 
     def get_operations(self):
         """
          Accessor method for operations attribute.
-         
-        @return list : The list of operations
-        @author
+         @rtype: list
+         @return: The list of operations
+         @author: Max Vizard
         """
         pass
 
@@ -52,8 +55,9 @@ class Action(object):
         """
          Accessor method for in_act_str attribute.
          
-        @return string : The in_act_str attribute
-        @author
+         @rtype: string
+         @return: The in_act_str attribute
+         @author: Max Vizard
         """
         pass
 
@@ -61,8 +65,9 @@ class Action(object):
         """
          Accessor method for done_act_str attribute.
          
-        @return string : The done_act_str attribute
-        @author
+         @rtype: string
+         @return: The done_act_str attribute
+         @author: Max Vizard
         """
         pass
     
@@ -70,7 +75,8 @@ class Action(object):
         """
          Accessor method for needs_target attribute.
          
-        @return boolean : Whether the Action needs a target
-        @author
+         @rtype: boolean
+         @return: Whether the Action needs a target
+         @author: Max Vizard
         """
         pass
